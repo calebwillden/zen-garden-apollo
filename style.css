@@ -1,0 +1,88 @@
+/* Zen Garden style.css */
+/* Adam Finder, Caleb Willden, Preston Batemam */
+body {
+  background: #212223;
+}
+
+.page-wrapper > * {
+  background: #212223;
+  margin: 4px;
+}
+.page-wrapper > * > * {
+  background: #99979b;
+  padding: 4px;
+  margin: 4px;
+}
+.page-wrapper > * > * > * {
+  background: #f03120;
+  padding: 4px;
+  margin: 4px;
+}
+
+div[role=article] {
+  background: #99979b;
+}
+
+#css-zen-garden {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#zen-intro::before {
+  background-image: url("../src/assets/logo.svg");
+  background-size: 220px 80px;
+  width: 220px;
+  height: 80px;
+  display: inline-block;
+  content: "";
+}
+
+@media (min-width: 60em) {
+  .page-wrapper {
+    max-width: 1080px;
+  }
+
+  #zen-intro::before {
+    display: block;
+    margin: 0 auto;
+  }
+  #zen-intro header,
+#zen-intro #zen-summary {
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  #zen-preamble,
+#zen-explanation {
+    width: 100%;
+  }
+
+  #zen-supporting {
+    position: relative;
+    width: 100%;
+  }
+  #zen-supporting div[role=article] {
+    width: 50%;
+  }
+  #zen-supporting footer {
+    width: 100%;
+  }
+
+  #zen-benefits {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  aside {
+    width: 532px;
+    position: absolute;
+    left: 540px;
+    top: 580px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

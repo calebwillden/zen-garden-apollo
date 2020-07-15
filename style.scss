@@ -1,0 +1,135 @@
+/****************************************
+   Project:  Zen Garden
+   Filename: style.css
+   Authors:  Adam Finder, Caleb Willden 
+*****************************************/
+
+// Filepaths
+$assets-path: "/assets";
+
+// Size Variables
+$logo-width: 220px;
+$logo-height: 80px;
+
+$content-width: 1080px;
+$header-width: 400px;
+
+// Colors are used for visualizing section elements and layout
+$gold: #d4af37;
+$black: #212223;
+$gray: #99979b;
+$white: #fff9fb;
+$red: #f03120;
+$blue: #2e58a8;
+
+$color-1: $black;
+$color-2: $gray;
+$color-3: $red;
+$color-4: $gold;
+$color-5: $white;
+
+// Color everything for visualization
+body {
+    background: $color-1;
+}
+
+.page-wrapper{
+
+    &>* {
+        background: $color-1;
+        margin: 4px;
+    
+        &>* {
+           background: $color-2;
+           padding: 4px;
+           margin: 4px;
+           
+           &>* {
+               background: $color-3;
+               padding: 4px;
+               margin: 4px;
+           }
+        }
+    }
+}
+
+div[role=article] {
+    background: $color-2;
+}
+
+// Overall
+#css-zen-garden {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+// INTRO
+#zen-intro {
+
+    &::before {
+        background-image: url($assets-path + "logo.svg");
+        background-size: $logo-width $logo-height;
+        width: $logo-width;
+        height: $logo-height;
+        display: inline-block;
+        content: "";
+    }
+}
+
+// ****************************************
+// DESKTOP
+// ****************************************
+@media (min-width: 60em) {
+    
+    .page-wrapper {
+        max-width: $content-width;
+    }
+
+    #zen-intro {
+
+        &::before {
+            display: block;
+            margin: 0 auto;
+        }
+
+        header,
+        #zen-summary {
+            width: $header-width;
+            margin: 0 auto;
+        }
+    }
+
+    #zen-preamble,
+    #zen-explanation {
+        width: 100%;
+    }
+
+    #zen-supporting {
+        position: relative;
+        width: 100%;
+        
+        div[role="article"] {
+            width: 50%;
+        }
+
+        footer {
+            width: 100%;
+        }
+    }
+    
+    #zen-benefits {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+        
+    aside {
+        width: 532px;
+        position: absolute;
+        left: 540px;
+        top: 580px;
+    }
+}
