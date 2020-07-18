@@ -1,43 +1,141 @@
-/* Zen Garden style.css */
-/* Adam Finder, Caleb Willden, Preston Batemam */
+/****************************************
+   Project:  Zen Garden
+   Filename: style.css
+   Authors:  Adam Finder, Caleb Willden 
+*****************************************/
+@import url("https://fonts.googleapis.com/css2?family=Nova+Square&family=Play&display=swap");
 body {
   background: #212223;
+  font-family: "play", sans-serif;
 }
 
-.page-wrapper > * {
-  background: #212223;
-  margin: 4px;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Nova Square", cursive;
 }
-.page-wrapper > * > * {
+
+/*.*/
+page-wrapper > * {
+  background: #212223;
+  margin: 0;
+}
+page-wrapper > * > * {
   background: #99979b;
   padding: 4px;
-  margin: 4px;
+  margin: 4px 0;
 }
-.page-wrapper > * > * > * {
+page-wrapper > * > * > * {
   background: #f03120;
-  padding: 4px;
-  margin: 4px;
 }
 
 div[role=article] {
-  background: #99979b;
+  background: #E0E0E0;
 }
 
 #css-zen-garden {
   margin: 0;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 #zen-intro::before {
-  background-image: url("../src/assets/logo.svg");
+  background-image: url("/assets/logo/logo.svg");
   background-size: 220px 80px;
   width: 220px;
   height: 80px;
-  display: inline-block;
+  display: block;
+  margin: auto;
   content: "";
+}
+#zen-intro header {
+  background: url("/assets/lander-top.svg");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: bottom;
+  width: 100%;
+  max-width: 20rem;
+  height: 20rem;
+  margin: auto;
+  text-align: center;
+}
+#zen-intro header h1 {
+  margin: auto;
+  margin-top: 10rem;
+}
+#zen-intro header h2 {
+  margin: auto;
+}
+#zen-intro .summary {
+  background: url("/assets/lander-bottom.svg");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: top;
+  width: 100%;
+  max-width: 20rem;
+  height: 20rem;
+  margin: auto;
+  text-align: center;
+  margin-top: -0.5rem;
+  padding-top: 5rem;
+  margin-bottom: 5rem;
+}
+#zen-intro .summary::after {
+  background: url("/assets/lander-flame.svg");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: top;
+  width: 100%;
+  max-width: 20rem;
+  height: 10rem;
+  display: block;
+  margin: auto;
+  content: "";
+  position: absolute;
+}
+
+#zen-summary {
+  width: 33em;
+  height: 33em;
+  margin: auto;
+}
+
+#zen-preamble::before {
+  content: "";
+  background: url("/assets/moon-surface.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  width: 100%;
+  height: 12vw;
+  position: absolute;
+  display: block;
+  margin-top: -12vw;
+}
+
+footer::after {
+  content: "";
+  background: url("/assets/moon-surface.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  width: 100%;
+  height: 12vw;
+  position: absolute;
+  display: block;
+  margin-bottom: -12vw;
+  transform: scaleY(-1);
+}
+
+aside {
+  position: relative;
+  top: 10em;
 }
 
 @media (min-width: 60em) {

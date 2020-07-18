@@ -28,41 +28,78 @@ $color-3: $red;
 $color-4: $gold;
 $color-5: $white;
 
+$space: $black;
+$moon-surface: #E0E0E0;
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&family=Play&display=swap');
+
+$font-1: 'Nova Square', cursive;
+$font-2: 'play', sans-serif;
+
+$heading-font: $font-1;
+$body-font: $font-2;
+
+// Size Variables
+$moon-surface-height: 12vw;
+
+// Mixins
+
+
+// @mixin crater-sm {
+//     width: 50%;
+// }
+
+// #zen-whatever {
+//     @include crater-sm();
+// }
+
 // Color everything for visualization
 body {
     background: $color-1;
+    font-family: $body-font;
 }
 
-.page-wrapper{
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: $heading-font;
+}
 
+// BOX EVERYTHING
+/*.*/page-wrapper{
     &>* {
         background: $color-1;
-        margin: 4px;
+        margin: 0;
     
         &>* {
            background: $color-2;
            padding: 4px;
-           margin: 4px;
+           margin: 4px 0;
            
            &>* {
                background: $color-3;
-               padding: 4px;
-               margin: 4px;
+            //    padding: 4px;
+            //    margin: 4px;
            }
         }
     }
 }
 
 div[role=article] {
-    background: $color-2;
+    background: $moon-surface;
 }
 
-// Overall
+// RESET
 #css-zen-garden {
     margin: 0;
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -70,13 +107,115 @@ div[role=article] {
 #zen-intro {
 
     &::before {
-        background-image: url($assets-path + "logo.svg");
+        background-image: url($assets-path + "/logo/logo.svg");
         background-size: $logo-width $logo-height;
         width: $logo-width;
         height: $logo-height;
-        display: inline-block;
+        display: block;
+        margin: auto;
         content: "";
     }
+
+    header {
+        // Top of the Lander
+        background: url($assets-path + "/lander-top.svg");
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: bottom;
+        width: 100%;
+        max-width: 20rem;
+        height: 20rem;
+        margin: auto;
+        text-align: center;
+        
+        h1 {
+            margin: auto;
+            margin-top: 10rem;
+        }
+
+        h2 {
+            margin: auto;
+        }
+    }
+
+    // Bottom of the Lander
+    .summary {
+        background: url($assets-path + "/lander-bottom.svg");
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: top;
+        width: 100%;
+        max-width: 20rem;
+        height: 20rem;
+        margin: auto;
+        text-align: center;
+        margin-top: -0.5rem;
+        padding-top: 5rem;
+        
+        // Flame
+        &::after {
+            background: url($assets-path + "/lander-flame.svg");
+            background-repeat: no-repeat;
+            background-position-x: center;
+            background-position-y: top;
+            width: 100%;        
+            max-width: 20rem;
+            height: 10rem;
+            display: block;
+            margin: auto;
+            content: "";
+            position: absolute;
+        }
+
+        margin-bottom: 5rem;
+    }
+}
+
+#zen-summary {
+    width: 33em;
+    height: 33em;
+    margin: auto;
+}
+
+// PREAMBLE
+#zen-preamble {
+
+    // Curved Moon Surface
+    &::before {
+        content: "";
+        background: url($assets-path + "/moon-surface.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        width: 100%;
+        height: $moon-surface-height;
+        position: absolute;
+        display: block;
+        margin-top: -$moon-surface-height;
+    }
+}
+
+footer {
+    // Curved Moon Surface
+    &::after {
+        content: "";
+        background: url($assets-path + "/moon-surface.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        width: 100%;
+        height: $moon-surface-height;
+        position: absolute;
+        display: block;
+        margin-bottom: -$moon-surface-height;
+        transform: scaleY(-1);
+    }
+
+}
+
+aside {
+    position: relative;
+    top: 10em;
 }
 
 // ****************************************
@@ -133,3 +272,4 @@ div[role=article] {
         top: 580px;
     }
 }
+
