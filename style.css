@@ -17,6 +17,23 @@ h5 {
   font-family: "Nova Square", cursive;
 }
 
+h3 {
+  margin-top: 0px;
+  margin-bottom: -0.75rem;
+  padding-top: 2em;
+  padding-left: 1rem;
+}
+
+p {
+  margin-bottom: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+a {
+  color: #f03120;
+}
+
 /*.*/
 page-wrapper > * {
   background: #212223;
@@ -61,16 +78,19 @@ div[role=article] {
   background-position-y: bottom;
   width: 100%;
   max-width: 20rem;
-  height: 20rem;
+  height: 10rem;
   margin: auto;
-  text-align: center;
 }
 #zen-intro header h1 {
-  margin: auto;
-  margin-top: 10rem;
+  display: none;
 }
 #zen-intro header h2 {
+  width: 40%;
   margin: auto;
+  text-align: center;
+  font-size: 1rem;
+  position: relative;
+  top: 5.4rem;
 }
 #zen-intro .summary {
   background: url("/assets/lander-bottom.svg");
@@ -79,14 +99,24 @@ div[role=article] {
   background-position-y: top;
   width: 100%;
   max-width: 20rem;
-  height: 20rem;
+  height: 10rem;
   margin: auto;
   text-align: center;
-  margin-top: -0.5rem;
-  padding-top: 5rem;
-  margin-bottom: 5rem;
+  margin-top: -1.5rem;
+  margin-bottom: 10em;
 }
-#zen-intro .summary::after {
+#zen-intro .summary p {
+  width: 75%;
+  margin: auto;
+  padding-top: 1em;
+  font-size: 0.6rem;
+  color: white;
+}
+#zen-intro .summary p:nth-child(2) {
+  width: 45%;
+}
+#zen-intro .summary::before {
+  content: "";
   background: url("/assets/lander-flame.svg");
   background-repeat: no-repeat;
   background-position-x: center;
@@ -96,8 +126,10 @@ div[role=article] {
   height: 10rem;
   display: block;
   margin: auto;
-  content: "";
   position: absolute;
+  margin-top: 6rem;
+  margin-left: 0.3rem;
+  z-index: -1;
 }
 
 #zen-summary {

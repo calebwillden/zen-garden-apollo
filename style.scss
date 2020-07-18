@@ -68,6 +68,23 @@ h5 {
     font-family: $heading-font;
 }
 
+h3 {
+    margin-top: 0px;
+    margin-bottom: -0.75rem;
+    padding-top: 2em;
+    padding-left: 1rem;
+}
+
+p {
+    margin-bottom: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+a {
+    color: $red;
+}
+
 // BOX EVERYTHING
 /*.*/page-wrapper{
     &>* {
@@ -124,17 +141,20 @@ div[role=article] {
         background-position-y: bottom;
         width: 100%;
         max-width: 20rem;
-        height: 20rem;
+        height: 10rem;
         margin: auto;
-        text-align: center;
         
         h1 {
-            margin: auto;
-            margin-top: 10rem;
+            display: none; // We already have a logo
         }
 
         h2 {
+            width: 40%;
             margin: auto;
+            text-align: center;
+            font-size: 1rem;
+            position: relative;
+            top: 5.4rem;
         }
     }
 
@@ -146,14 +166,26 @@ div[role=article] {
         background-position-y: top;
         width: 100%;
         max-width: 20rem;
-        height: 20rem;
+        height: 10rem;
         margin: auto;
         text-align: center;
-        margin-top: -0.5rem;
-        padding-top: 5rem;
-        
+        margin-top: -1.5rem;
+
+        p {
+            width: 75%;
+            margin: auto;
+            padding-top: 1em;
+            font-size: 0.6rem;
+            color: white;
+
+            &:nth-child(2) {
+                width: 45%;
+            }
+        }
+
         // Flame
-        &::after {
+        &::before {
+            content: "";
             background: url($assets-path + "/lander-flame.svg");
             background-repeat: no-repeat;
             background-position-x: center;
@@ -163,11 +195,13 @@ div[role=article] {
             height: 10rem;
             display: block;
             margin: auto;
-            content: "";
             position: absolute;
+            margin-top: 6rem;
+            margin-left: 0.3rem;
+            z-index: -1;
         }
 
-        margin-bottom: 5rem;
+        margin-bottom: 10em;
     }
 }
 
