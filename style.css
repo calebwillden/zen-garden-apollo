@@ -4,8 +4,15 @@
    Authors:  Adam Finder, Caleb Willden 
 *****************************************/
 @import url("https://fonts.googleapis.com/css2?family=Nova+Square&family=Play&display=swap");
+@keyframes hover {
+  100% {
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+}
 body {
-  background: #212223;
+  background-color: #212121;
+  background-image: url("/assets/space.svg");
   font-family: "play", sans-serif;
 }
 
@@ -33,19 +40,8 @@ p {
 a {
   color: #f03120;
 }
-
-/*.*/
-page-wrapper > * {
-  background: #212223;
-  margin: 0;
-}
-page-wrapper > * > * {
-  background: #99979b;
-  padding: 4px;
-  margin: 4px 0;
-}
-page-wrapper > * > * > * {
-  background: #f03120;
+a:hover {
+  color: #d4af37;
 }
 
 div[role=article] {
@@ -59,11 +55,12 @@ div[role=article] {
 *,
 *::before,
 *::after {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 #zen-intro::before {
-  background-image: url("/assets/logo/logo.svg");
+  background-image: url("/assets/logo.svg");
   background-size: 220px 80px;
   width: 220px;
   height: 80px;
@@ -80,6 +77,7 @@ div[role=article] {
   max-width: 20rem;
   height: 10rem;
   margin: auto;
+  margin-top: 3rem;
 }
 #zen-intro header h1 {
   display: none;
@@ -103,7 +101,7 @@ div[role=article] {
   margin: auto;
   text-align: center;
   margin-top: -1.5rem;
-  margin-bottom: 10em;
+  margin-bottom: 15em;
 }
 #zen-intro .summary p {
   width: 75%;
@@ -131,6 +129,11 @@ div[role=article] {
   margin-left: 0.3rem;
   z-index: -1;
 }
+#zen-intro header,
+#zen-intro .summary {
+  -webkit-animation: hover 1s infinite alternate;
+  animation: hover 1s infinite alternate;
+}
 
 #zen-summary {
   width: 33em;
@@ -141,77 +144,136 @@ div[role=article] {
 #zen-preamble::before {
   content: "";
   background: url("/assets/moon-surface.svg");
-  background-size: contain;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position-y: bottom;
   width: 100%;
-  height: 12vw;
+  height: 200px;
   position: absolute;
   display: block;
-  margin-top: -12vw;
+  margin-top: -199px;
 }
 
+footer {
+  background-color: #E0E0E0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  padding: 2rem;
+  font-weight: bold;
+}
 footer::after {
   content: "";
   background: url("/assets/moon-surface.svg");
-  background-size: contain;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position-y: bottom;
   width: 100%;
-  height: 12vw;
+  height: 200px;
   position: absolute;
   display: block;
-  margin-bottom: -12vw;
+  margin-top: 3.05rem;
+  -webkit-transform: scaleY(-1);
+  -ms-transform: scaleY(-1);
   transform: scaleY(-1);
 }
 
 aside {
-  position: relative;
-  top: 10em;
+  width: fit-content;
+  margin: auto;
+  color: #d4af37;
+  padding-top: 4vw;
+  padding-bottom: 3vw;
+  -webkit-transform: perspective(300px) rotateX(15deg);
+  transform: perspective(300px) rotateX(15deg);
+  -webkit-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+aside h3 {
+  padding-top: 0;
+}
+aside a {
+  color: #d4af37;
+}
+aside a:hover {
+  color: #f03120;
 }
 
 @media (min-width: 60em) {
-  .page-wrapper {
-    max-width: 1080px;
-  }
-
-  #zen-intro::before {
-    display: block;
-    margin: 0 auto;
-  }
-  #zen-intro header,
-#zen-intro #zen-summary {
-    width: 400px;
-    margin: 0 auto;
-  }
-
-  #zen-preamble,
-#zen-explanation {
-    width: 100%;
+  #zen-preamble * {
+    width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #zen-supporting {
-    position: relative;
-    width: 100%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto 25em 25em auto;
+    grid-template-columns: auto 25em 25em auto;
+    -ms-grid-rows: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: "left-margin explanation   requirements right-margin" "left-margin participation requirements right-margin" "left-margin benefits      benefits     right-margin" "left-margin footer        footer       right-margin";
+    background: #E0E0E0;
   }
-  #zen-supporting div[role=article] {
-    width: 50%;
+
+  #zen-explanation {
+    grid-area: explanation;
   }
-  #zen-supporting footer {
-    width: 100%;
+
+  #zen-participation {
+    grid-area: participation;
+  }
+
+  #zen-requirements {
+    grid-area: requirements;
   }
 
   #zen-benefits {
-    position: absolute;
-    top: 0;
-    right: 0;
+    grid-area: benefits;
+  }
+
+  footer {
+    grid-area: footer;
   }
 
   aside {
-    width: 532px;
-    position: absolute;
-    left: 540px;
-    top: 580px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  aside .wrapper {
+    width: 40rem;
+    margin: auto;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    -ms-grid-rows: 1fr auto;
+    grid-template-rows: 1fr auto;
+    grid-template-areas: "select archives" "select resources";
+  }
+
+  #design-selection {
+    grid-area: select;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 1;
+  }
+
+  #design-archives {
+    grid-area: archives;
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+  }
+
+  #zen-resources {
+    grid-area: resources;
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
   }
 }
 

@@ -16,20 +16,14 @@ $header-width: 400px;
 
 // Colors are used for visualizing section elements and layout
 $gold: #d4af37;
-$black: #212223;
-$gray: #99979b;
+$black: #212121;
+$gray: #E0E0E0;
 $white: #fff9fb;
 $red: #f03120;
 $blue: #2e58a8;
 
-$color-1: $black;
-$color-2: $gray;
-$color-3: $red;
-$color-4: $gold;
-$color-5: $white;
-
 $space: $black;
-$moon-surface: #E0E0E0;
+$moon-surface-color: #E0E0E0;
 
 // Fonts
 @import url('https://fonts.googleapis.com/css2?family=Nova+Square&family=Play&display=swap');
@@ -41,22 +35,19 @@ $heading-font: $font-1;
 $body-font: $font-2;
 
 // Size Variables
-$moon-surface-height: 12vw;
+$moon-surface-height: 200px;
 
-// Mixins
-
-
-// @mixin crater-sm {
-//     width: 50%;
-// }
-
-// #zen-whatever {
-//     @include crater-sm();
-// }
-
-// Color everything for visualization
+// Animation
+@keyframes hover {
+    100% {
+        -webkit-transform: translateY(20px);
+                transform: translateY(20px);
+    }
+}
+  
 body {
-    background: $color-1;
+    background-color: $black;
+    background-image: url($assets-path + "/space.svg");
     font-family: $body-font;
 }
 
@@ -83,30 +74,14 @@ p {
 
 a {
     color: $red;
-}
 
-// BOX EVERYTHING
-/*.*/page-wrapper{
-    &>* {
-        background: $color-1;
-        margin: 0;
-    
-        &>* {
-           background: $color-2;
-           padding: 4px;
-           margin: 4px 0;
-           
-           &>* {
-               background: $color-3;
-            //    padding: 4px;
-            //    margin: 4px;
-           }
-        }
+    &:hover {
+        color: $gold;
     }
 }
 
 div[role=article] {
-    background: $moon-surface;
+    background: $moon-surface-color;
 }
 
 // RESET
@@ -117,14 +92,15 @@ div[role=article] {
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 // INTRO
 #zen-intro {
 
     &::before {
-        background-image: url($assets-path + "/logo/logo.svg");
+        background-image: url($assets-path + "/logo.svg");
         background-size: $logo-width $logo-height;
         width: $logo-width;
         height: $logo-height;
@@ -143,6 +119,7 @@ div[role=article] {
         max-width: 20rem;
         height: 10rem;
         margin: auto;
+        margin-top: 3rem;
         
         h1 {
             display: none; // We already have a logo
@@ -201,7 +178,13 @@ div[role=article] {
             z-index: -1;
         }
 
-        margin-bottom: 10em;
+        margin-bottom: 15em;
+    }
+
+    header,
+    .summary {
+        -webkit-animation: hover 1s infinite alternate;
+                animation: hover 1s infinite alternate;
     }
 }
 
@@ -218,92 +201,155 @@ div[role=article] {
     &::before {
         content: "";
         background: url($assets-path + "/moon-surface.svg");
-        background-size: contain;
+        background-size: 100%;
         background-repeat: no-repeat;
         background-position-y: bottom;
         width: 100%;
         height: $moon-surface-height;
         position: absolute;
         display: block;
-        margin-top: -$moon-surface-height;
+        margin-top: -$moon-surface-height + 1px;
     }
 }
 
 footer {
+    background-color: #E0E0E0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    padding: 2rem;
+    font-weight: bold;
+
     // Curved Moon Surface
     &::after {
         content: "";
         background: url($assets-path + "/moon-surface.svg");
-        background-size: contain;
+        background-size: 100%;
         background-repeat: no-repeat;
         background-position-y: bottom;
         width: 100%;
         height: $moon-surface-height;
         position: absolute;
         display: block;
-        margin-bottom: -$moon-surface-height;
-        transform: scaleY(-1);
+        margin-top: 3.05rem;
+        -webkit-transform: scaleY(-1);
+            -ms-transform: scaleY(-1);
+                transform: scaleY(-1);
     }
-
 }
 
 aside {
-    position: relative;
-    top: 10em;
+    width: fit-content;
+    margin: auto;
+    color: #d4af37;
+    padding-top: 4vw;
+    padding-bottom: 3vw;
+    -webkit-transform: perspective(300px) rotateX(15deg);
+            transform: perspective(300px) rotateX(15deg);
+    -webkit-transform-origin: 50% 100%;
+        -ms-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    
+    h3 {
+        padding-top: 0;
+    }
+    
+
+    a {
+        color: $gold;
+
+        &:hover {
+            color: $red;
+        }
+    }
 }
 
 // ****************************************
 // DESKTOP
 // ****************************************
 @media (min-width: 60em) {
-    
-    .page-wrapper {
-        max-width: $content-width;
+
+    #zen-preamble * {
+        width: 50rem;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    #zen-intro {
-
-        &::before {
-            display: block;
-            margin: 0 auto;
-        }
-
-        header,
-        #zen-summary {
-            width: $header-width;
-            margin: 0 auto;
-        }
-    }
-
-    #zen-preamble,
-    #zen-explanation {
-        width: 100%;
-    }
-
+    // SUPPORTING
     #zen-supporting {
-        position: relative;
-        width: 100%;
-        
-        div[role="article"] {
-            width: 50%;
-        }
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: auto 25em 25em auto;
+        grid-template-columns: auto 25em 25em auto;
+        -ms-grid-rows: auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+          "left-margin explanation   requirements right-margin"
+          "left-margin participation requirements right-margin"
+          "left-margin benefits      benefits     right-margin"
+          "left-margin footer        footer       right-margin";
+        background: $moon-surface-color;
+    }
 
-        footer {
-            width: 100%;
+    #zen-explanation {
+        grid-area: explanation;
+    }
+
+    #zen-participation {
+        grid-area: participation;
+    }
+
+    #zen-requirements {
+        grid-area: requirements;
+    }
+
+    #zen-benefits {
+        grid-area: benefits;
+    }
+
+    footer {
+        grid-area: footer;
+    }
+
+    // ASIDE
+    aside {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    
+        .wrapper {
+            width: 40rem;
+            margin: auto;
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-columns: 2fr 1fr;
+            grid-template-columns: 2fr 1fr;
+            -ms-grid-rows: 1fr auto;
+            grid-template-rows: 1fr auto;
+            grid-template-areas: "select archives" "select resources";
         }
     }
+
+    #design-selection {
+        grid-area: select;
+        -ms-grid-row: 1;
+        -ms-grid-row-span: 2;
+        -ms-grid-column: 1;
+      }
     
-    #zen-benefits {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-        
-    aside {
-        width: 532px;
-        position: absolute;
-        left: 540px;
-        top: 580px;
-    }
+      #design-archives {
+        grid-area: archives;
+        -ms-grid-row: 1;
+        -ms-grid-column: 2;
+      }
+    
+      #zen-resources {
+        grid-area: resources;
+        -ms-grid-row: 2;
+        -ms-grid-column: 2;
+      }
+
 }
 
